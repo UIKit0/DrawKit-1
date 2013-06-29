@@ -333,7 +333,7 @@ static CGFloat			sAngleConstraint = 0.261799387799;	// 15°
 				
 			case kDKRegularPolyRotationPart:
 				val = [self angleInDegrees];
-				infoStr = [NSString stringWithFormat:@"%.1f%C", val, 0xB0];
+				infoStr = [NSString stringWithFormat:@"%.1f%C", val, (unichar)0xB0];
 				break;
 				
 			case kDKRegularPolyTipSpreadPart:
@@ -647,7 +647,7 @@ static CGFloat			sAngleConstraint = 0.261799387799;	// 15°
 	[[self layer] setInfoWindowBackgroundColour:[[self class]infoWindowBackgroundColour]];
 
 	[self setTrackingMouse:YES];
-	DKDrawablePathCreationMode mode = [self pathCreationMode];
+	NSInteger mode = [self pathCreationMode];
 	
 	switch ( mode )
 	{

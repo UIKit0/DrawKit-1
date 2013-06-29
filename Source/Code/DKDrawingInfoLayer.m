@@ -243,7 +243,7 @@ NSString*	kDKDrawingInfoTextLabelAttributes = @"kDKDrawingInfoTextLabelAttribute
 }
 
 
-- (NSAttributedString*)	labelForDrawingInfoItem:(NSString*) key;
+- (NSAttributedString*)	labelForDrawingInfoItem:(NSString*) key
 {
 	// returns the infobox label for the given drawing info item. The string is localisable.
 	

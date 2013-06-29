@@ -19,7 +19,7 @@ void Point::normalize() {
 	double len = hypot(_pt[0], _pt[1]);
 	if(len == 0) return;
 	if(isNaN(len)) return;
-	static double const inf = 1e400;
+	static double const inf = INFINITY;
 	if(len != inf) {
 		*this /= len;
 	} else {

@@ -103,9 +103,9 @@
 	height = MAX( 1, (NSInteger)( rect.size.height * 1.5f ));
 	
 	NSUInteger		bufferSize = 4 * width * ( height + 1 );
-	unsigned char*	buffer;
+	unsigned long*	buffer;
 	
-	buffer = (unsigned char*) malloc( bufferSize );
+	buffer = (unsigned long*) malloc( bufferSize );
 	
 	if ( buffer )
 	{
@@ -131,8 +131,6 @@
 		cp.y *= 1.5;
 		twopi = 2 * pi;
 		
-		unsigned long* p = (unsigned long*) buffer;
-		
 		for( y = 0; y < height; ++y )
 		{
 			for( x = 0; x < width; ++x )
@@ -149,7 +147,7 @@
 					
 				// write the colour to the image in one fell swoop
 				
-				*p++ = colours[colour].pixel;
+				*buffer++ = colours[colour].pixel;
 			}
 		}
 		

@@ -593,7 +593,7 @@
 }
 
 
-- (GCUndoTaskCoalescingKind) coalescingKind;
+- (GCUndoTaskCoalescingKind) coalescingKind
 {
 	return mCoalKind;
 }
@@ -987,7 +987,7 @@
 			else
 				selString = @"<subgroup>";
 			
-			[newTaskGroup setActionName:[NSString stringWithFormat:@"%@ (%d: %@)", [topGroup actionName], ++suffix, selString ]];
+			[newTaskGroup setActionName:[NSString stringWithFormat:@"%@ (%ld: %@)", [topGroup actionName], (unsigned long)++suffix, selString ]];
 			[self pushGroupOntoUndoStack:newTaskGroup];
 			[newTaskGroup release];
 		}
@@ -1056,7 +1056,7 @@
 
 - (NSString*)			description
 {
-	return [NSString stringWithFormat:@"%@ g-level = %d, u-stack: %@, r-stack: %@", [super description], [self groupingLevel], [self undoStack], [self redoStack]];
+	return [NSString stringWithFormat:@"%@ g-level = %ld, u-stack: %@, r-stack: %@", [super description], (unsigned long)[self groupingLevel], [self undoStack], [self redoStack]];
 }
 
 
@@ -1104,7 +1104,7 @@
 
 - (GCUndoTask*)			taskAtIndex:(NSUInteger) indx
 {
-	THROW_IF_FALSE2( indx < [[self tasks] count], @"invalid task index (%d) in group %@", indx, self );
+	THROW_IF_FALSE2( indx < [[self tasks] count], @"invalid task index (%ld) in group %@", (unsigned long)indx, self );
 	
 	return [[self tasks] objectAtIndex:indx];
 }
@@ -1276,7 +1276,7 @@
 
 - (NSString*)			description
 {
-	return [NSString stringWithFormat:@"%@ '%@' %d tasks: %@", [super description], [self actionName], [mTasks count], mTasks];
+	return [NSString stringWithFormat:@"%@ '%@' %ld tasks: %@", [super description], [self actionName], (unsigned long)[mTasks count], mTasks];
 }
 
 @end
@@ -1409,7 +1409,7 @@
 
 - (NSString*)			description
 {
-	return [NSString stringWithFormat:@"%@ target = <%@ 0x%x>, selector: %@", [super description], NSStringFromClass([[self target] class]), [self target], NSStringFromSelector([mInvocation selector])];
+	return [NSString stringWithFormat:@"%@ target = <%@ %p>, selector: %@", [super description], NSStringFromClass([[self target] class]), [self target], NSStringFromSelector([mInvocation selector])];
 }
 
 @end

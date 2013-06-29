@@ -549,7 +549,7 @@ static DKLayerCacheOption sDefaultCacheOption = kDKLayerCacheNone;
 ///
 ///********************************************************************************************************************
 
-- (NSIndexSet*)			indexesOfObjectsInArray:(NSArray*) objs;
+- (NSIndexSet*)			indexesOfObjectsInArray:(NSArray*) objs
 {
 	NSAssert( objs != nil, @"can't get indexes for a nil array");
 	
@@ -892,7 +892,7 @@ static DKLayerCacheOption sDefaultCacheOption = kDKLayerCacheNone;
 ///
 ///********************************************************************************************************************
 
-- (BOOL)				addObjectsFromArray:(NSArray*) objs bounds:(NSRect) bounds relativeToPoint:(NSPoint) origin pinToInterior:(BOOL) pin;
+- (BOOL)				addObjectsFromArray:(NSArray*) objs bounds:(NSRect) bounds relativeToPoint:(NSPoint) origin pinToInterior:(BOOL) pin
 {
 	if (![self lockedOrHidden])
 	{
@@ -2593,7 +2593,7 @@ static DKLayerCacheOption sDefaultCacheOption = kDKLayerCacheNone;
 ///
 ///********************************************************************************************************************
 
-- (IBAction)			toggleShowStorageDebuggingPath:(id) sender;
+- (IBAction)			toggleShowStorageDebuggingPath:(id) sender
 {
 #pragma unused(sender)
 	mShowStorageDebugging = !mShowStorageDebugging;

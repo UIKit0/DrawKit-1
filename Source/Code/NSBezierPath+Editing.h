@@ -78,8 +78,8 @@
 
 
 
-inline NSInteger		partcodeForElement( const NSInteger element );
-inline NSInteger		partcodeForElementControlPoint( const NSInteger element, const NSInteger controlPointIndex );
+extern inline NSInteger		partcodeForElement( const NSInteger element );
+extern inline NSInteger		partcodeForElementControlPoint( const NSInteger element, const NSInteger controlPointIndex );
 
 /*
 

@@ -1604,7 +1604,7 @@ static Class	s_textEditorClass = Nil;
 	if([self inLiveResize])
 	{
 		NSRect	rects[4];
-        int		count;
+        NSInteger count;
 		
         [self getRectsExposedDuringLiveResize:rects count:&count];
         
@@ -1865,7 +1865,9 @@ static Class	s_textEditorClass = Nil;
 		}
 	}
 	
-	[(id)super changeAttributes:sender];
+    if ([super respondsToSelector:@selector(changeAttributes:)]) {
+        [super performSelector:@selector(changeAttributes:) withObject:sender];
+    }
 }
 
 

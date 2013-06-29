@@ -1710,8 +1710,7 @@ static NSColor*		sMajorColour = nil;
 	
 	if ( action == @selector( copy: ))
 	{
-		NSString* title = NSLocalizedString(@"Copy %@", nil);
-		[item setTitle:[NSString stringWithFormat:title, [self layerName]]];
+		[item setTitle:[NSString stringWithFormat:NSLocalizedString(@"Copy %@", nil), [self layerName]]];
 		return YES;
 	}
 	

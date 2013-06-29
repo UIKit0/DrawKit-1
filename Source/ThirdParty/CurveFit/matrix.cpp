@@ -285,7 +285,7 @@ bool transform_equalp(Matrix const &m0, Matrix const &m1, Geom::Coord const epsi
 /**
  *
  */
-bool Translate_equalp(Matrix const &m0, Matrix const &m1, Geom::Coord const epsilon) {
+bool translate_equalp(Matrix const &m0, Matrix const &m1, Geom::Coord const epsilon) {
     return Geom_MATRIX_DF_TEST_TRANSLATE_CLOSE(&m0, &m1, epsilon);
 }
 
@@ -346,7 +346,7 @@ Matrix without_translation(Matrix const &m) {
 }
 
 //TODO: Other methods for Rotate/Scale - make an actual method?
-Translate to_Translate(Matrix const &m) {
+Translate to_translate(Matrix const &m) {
     return Translate(m[4], m[5]);
 }
 

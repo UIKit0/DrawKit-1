@@ -1860,7 +1860,7 @@ enum
 }
 
 
-- (BOOL)				multipleSelectionAutoForwarding;
+- (BOOL)				multipleSelectionAutoForwarding
 {
 	return mMultipleAutoForwarding;
 }
@@ -3690,7 +3690,7 @@ static void	 drawFunction3( const void* value, void* context )
 			// yes, so pass the drag info to the target and let it get on with it
 		//	LogEvent_(kReactiveEvent, @"passing drop to target = %@, availableType = %@", target, availableType );
 		
-			wasHandled = [target performDragOperation:sender];
+			wasHandled = [(id <NSDraggingDestination>)target performDragOperation:sender];
 		}
 	}
 	

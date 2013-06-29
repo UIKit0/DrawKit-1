@@ -508,7 +508,7 @@ static CGFloat			sAngleConstraint = 0.261799387799;	// 15°
 						if( angle < 0 )
 							angle += 360.0f;
 
-						[[self layer] showInfoWindowWithString:[NSString stringWithFormat:@"radius: %.2f%@\nangle: %.1f%C", rad, abbrUnits, angle, 0xB0] atPoint:nsp];
+						[[self layer] showInfoWindowWithString:[NSString stringWithFormat:@"radius: %.2f%@\nangle: %.1f%C", rad, abbrUnits, angle, (unichar)0xB0] atPoint:nsp];
 					}
 				}
 				else if ( phase == 1 )
@@ -524,7 +524,7 @@ static CGFloat			sAngleConstraint = 0.261799387799;	// 15°
 						if ( angle < 0 )
 							angle = 360.0 + angle;
 							
-						[[self layer] showInfoWindowWithString:[NSString stringWithFormat:@"radius: %.2f%@\narc angle: %.1f%C", rad, abbrUnits, angle, 0xB0] atPoint:nsp];
+						[[self layer] showInfoWindowWithString:[NSString stringWithFormat:@"radius: %.2f%@\narc angle: %.1f%C", rad, abbrUnits, angle, (unichar)0xB0] atPoint:nsp];
 					}
 				}
 				break;
@@ -709,7 +709,7 @@ static CGFloat			sAngleConstraint = 0.261799387799;	// 15°
 	[[self layer] setInfoWindowBackgroundColour:[[self class]infoWindowBackgroundColour]];
 
 	[self setTrackingMouse:YES];
-	DKDrawablePathCreationMode mode = [self pathCreationMode];
+	NSInteger mode = [self pathCreationMode];
 	
 	switch ( mode )
 	{
@@ -784,14 +784,14 @@ static CGFloat			sAngleConstraint = 0.261799387799;	// 15°
 			
 			case kDKArcPathRotationKnobPart:
 				angle = [self angleInDegrees];
-				infoStr = [NSString stringWithFormat:@"radius: %.2f%@\nangle: %.1f%C", rad, abbrUnits, angle, 0xB0];
+				infoStr = [NSString stringWithFormat:@"radius: %.2f%@\nangle: %.1f%C", rad, abbrUnits, angle, (unichar)0xB0];
 				break;
 				
 			default:
 				angle = RADIANS_TO_DEGREES( mEndAngle - mStartAngle );
 				if ( angle < 0 )
 					angle += 360.0f;
-				infoStr = [NSString stringWithFormat:@"radius: %.2f%@\narc angle: %.1f%C", rad, abbrUnits, angle, 0xB0];
+				infoStr = [NSString stringWithFormat:@"radius: %.2f%@\narc angle: %.1f%C", rad, abbrUnits, angle, (unichar)0xB0];
 				break;
 		}
 		

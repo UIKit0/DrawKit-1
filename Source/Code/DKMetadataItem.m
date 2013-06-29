@@ -68,7 +68,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 }
 
 
-+ (NSString*)			localizedDisplayNameForType:(DKMetadataType) type;
++ (NSString*)			localizedDisplayNameForType:(DKMetadataType) type
 {
 	switch( type )
 	{
@@ -260,7 +260,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 		if( strcmp( eType, @encode(int)) == 0)
 			return [self metadataItemWithInteger:[value integerValue]];
 		else if( strcmp( eType, @encode(double)) == 0 || strcmp( eType, @encode(float)) == 0 )
-			return [self metadataItemWithReal:[value floatValue]];
+			return [self metadataItemWithReal:[(NSNumber *)value floatValue]];
 		else if( strcmp( eType, @encode(unsigned)) == 0 )
 			return [self metadataItemWithUnsigned:[value unsignedIntegerValue]];
 		else if( strcmp( eType, @encode(BOOL)) == 0 )
@@ -740,7 +740,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 
 - (CGFloat)				floatValue
 {
-	return [[self convertValue:[self value] toType:DKMetadataTypeReal wasLossy:NULL] floatValue];
+	return [(NSNumber *)[self convertValue:[self value] toType:DKMetadataTypeReal wasLossy:NULL] floatValue];
 }
 
 
@@ -792,7 +792,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 #pragma mark -
 
 
-- (void)				assignValue:(id) aValue;
+- (void)				assignValue:(id) aValue
 {
 	// sets the current value ignoring type and without notifying
 	
@@ -881,7 +881,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 			if([inValue respondsToSelector:@selector(doubleValue)])
 				return [NSNumber numberWithDouble:[inValue doubleValue]];
 			else if([inValue respondsToSelector:@selector(floatValue)])
-				return [NSNumber numberWithDouble:[inValue floatValue]];
+				return [NSNumber numberWithDouble:[(NSNumber *)inValue floatValue]];
 			else
 			{
 				if( lossy )
@@ -896,7 +896,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 			else if([inValue respondsToSelector:@selector(colourValue)])
 				return [inValue colourValue];
 			else if([inValue respondsToSelector:@selector(floatValue)])
-				return [NSColor colorWithCalibratedWhite:[inValue floatValue] alpha:1.0];
+				return [NSColor colorWithCalibratedWhite:[(NSNumber *)inValue floatValue] alpha:1.0];
 			else
 			{
 				if( lossy )
@@ -930,7 +930,7 @@ NSString*		DKMultipleMetadataItemsPBoardType = @"com.apptree.dk.multimeta";
 			else if([inValue isKindOfClass:[NSString class]])
 				return [NSDate dateWithNaturalLanguageString:inValue];
 			else if([inValue respondsToSelector:@selector(floatValue)])
-				return [NSDate dateWithTimeIntervalSinceReferenceDate:[inValue floatValue]];
+				return [NSDate dateWithTimeIntervalSinceReferenceDate:[(NSNumber *)inValue floatValue]];
 			else
 			{
 				if( lossy )

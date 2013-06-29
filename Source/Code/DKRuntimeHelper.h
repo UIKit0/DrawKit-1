@@ -17,10 +17,3 @@
 + (NSArray*)	allImmediateSubclassesOf:(Class) aClass;
 
 @end
-
-
-
-BOOL	classIsNSObject( const Class aClass );
-BOOL	classIsSubclassOfClass( const Class aClass, const Class subclass );
-BOOL	classIsImmediateSubclassOfClass( const Class aClass, const Class subclass );
-

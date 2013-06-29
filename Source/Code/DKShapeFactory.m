@@ -21,7 +21,7 @@ NSString*	kDKSpeechBalloonCornerRadius = @"kDKSpeechBalloonCornerRadius";
 @implementation DKShapeFactory
 #pragma mark As a DKShapeFactory
 
-+ (DKShapeFactory*)	sharedShapeFactory;
++ (DKShapeFactory*)	sharedShapeFactory
 {
 	static DKShapeFactory* sSharedShapeFactory = nil;
 	

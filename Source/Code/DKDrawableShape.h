@@ -25,7 +25,7 @@ DKShapeEditOperation;
 
 
 
-@interface DKDrawableShape : DKDrawableObject <NSCoding, NSCopying>
+@interface DKDrawableShape : DKDrawableObject <NSCoding, NSCopying, NSDraggingDestination>
 {
 @private
 	NSBezierPath*			m_path;					// shape's path stored in canonical form (origin centred and with unit size)

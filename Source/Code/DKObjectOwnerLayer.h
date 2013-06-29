@@ -28,7 +28,7 @@ DKLayerCacheOption;
 // the class
 
 
-@interface DKObjectOwnerLayer : DKLayer <NSCoding, DKDrawableContainer>
+@interface DKObjectOwnerLayer : DKLayer <NSCoding, DKDrawableContainer, NSDraggingDestination>
 {
 @private
 	id<DKObjectStorage>		mStorage;				// the object storage

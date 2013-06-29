@@ -660,7 +660,7 @@
 ///
 ///********************************************************************************************************************
 
-- (NSColor*)			interpolatedColorToColor:(NSColor*) secondColor atValue:(CGFloat) interpValue;
+- (NSColor*)			interpolatedColorToColor:(NSColor*) secondColor atValue:(CGFloat) interpValue
 {
 	return [NSColor colorByInterpolatingFrom:self to:secondColor atValue:interpValue];
 }
@@ -694,7 +694,7 @@
 	hg = (NSInteger) floor( g * 255.0f );
 	hb = (NSInteger) floor( b * 255.0f );
 	
-	NSString* s = [NSString stringWithFormat:@"#%02X%02X%02X", hr, hg, hb ];
+	NSString* s = [NSString stringWithFormat:@"#%02lX%02lX%02lX", (long)hr, (long)hg, (long)hb ];
 
 	return s;
 }

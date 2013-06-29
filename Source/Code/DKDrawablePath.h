@@ -52,7 +52,7 @@ DKDrawablePathInsertType;
 // the class:
 
 
-@interface DKDrawablePath : DKDrawableObject <NSCoding, NSCopying>
+@interface DKDrawablePath : DKDrawableObject <NSCoding, NSCopying, NSDraggingDestination>
 {
 @private
 	NSBezierPath*			m_path;

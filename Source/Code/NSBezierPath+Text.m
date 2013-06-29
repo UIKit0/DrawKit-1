@@ -253,7 +253,7 @@ static NSDictionary*	s_TOPTextAttributes = nil;
 ///
 ///********************************************************************************************************************
 
-- (BOOL)				drawStringOnPath:(NSString*) str attributes:(NSDictionary*) attrs;
+- (BOOL)				drawStringOnPath:(NSString*) str attributes:(NSDictionary*) attrs
 {
 	// draws a string along the path with the supplied attributes
 	

@@ -15,7 +15,7 @@
 
 // generic layer class:
 
-@interface DKLayer : NSObject <NSCoding, DKKnobOwner, NSUserInterfaceValidations>
+@interface DKLayer : NSObject <NSCoding, DKKnobOwner, NSUserInterfaceValidations, NSDraggingDestination>
 {
 @private
 	NSString*				m_name;					// layer name

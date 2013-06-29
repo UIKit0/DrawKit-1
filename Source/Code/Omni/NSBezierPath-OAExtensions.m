@@ -122,12 +122,12 @@ static struct pointInfo getLinePoint(const NSPoint *a, CGFloat position) {
     return (NSPoint){ nanf(""), nanf("") };
 }
 
-- (BOOL)strokesSimilarlyIgnoringEndcapsToPath:(NSBezierPath *)otherPath;
+- (BOOL)strokesSimilarlyIgnoringEndcapsToPath:(NSBezierPath *)otherPath
 {
     return [[self countedSetOfEncodedStrokeSegments] isEqual:[otherPath countedSetOfEncodedStrokeSegments]];
 }
 
-- (NSCountedSet *)countedSetOfEncodedStrokeSegments;
+- (NSCountedSet *)countedSetOfEncodedStrokeSegments
 {
     NSPoint unlikelyPoint = {-10275847.33894, -10275847.33894};
     NSPoint firstPoint = unlikelyPoint, currentPoint = NSZeroPoint;
@@ -287,7 +287,7 @@ static void copyIntersection(OABezierPathIntersection *buf, const struct interse
     }
 }
 
-- (BOOL)firstIntersectionWithLine:(OABezierPathIntersection *)result lineStart:(NSPoint)lineStart lineEnd:(NSPoint)lineEnd;
+- (BOOL)firstIntersectionWithLine:(OABezierPathIntersection *)result lineStart:(NSPoint)lineStart lineEnd:(NSPoint)lineEnd
 {
     subpathWalkingState iter;
     NSPoint lineCoefficients[2];
@@ -541,7 +541,7 @@ static BOOL subsequent(struct OABezierPathIntersectionHalf *one, struct OABezier
 }
 
 // TODO: Write unit tests for this. In particular, make sure the winding count comes out right even if the test point is lined up with a vertex or cusp.
-- (void)getWinding:(NSInteger *)windingCountPtr andHit:(NSUInteger *)hitCountPtr forPoint:(NSPoint)point;
+- (void)getWinding:(NSInteger *)windingCountPtr andHit:(NSUInteger *)hitCountPtr forPoint:(NSPoint)point
 {
     NSInteger windingCount;
     NSUInteger hitCount;
@@ -772,7 +772,7 @@ void splitBezierCurveTo(const NSPoint *c, CGFloat t, NSPoint *l, NSPoint *r)
 //
 
 // From Scott Anguish's Cocoa book, I believe.
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect withRadius:(CGFloat)radius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect withRadius:(CGFloat)radius
 {
     NSPoint topMid = NSMakePoint(NSMidX(aRect), NSMaxY(aRect));
     NSPoint topLeft = NSMakePoint(NSMinX(aRect), NSMaxY(aRect));
@@ -787,7 +787,7 @@ void splitBezierCurveTo(const NSPoint *c, CGFloat t, NSPoint *l, NSPoint *r)
     [self closePath];
 }
 
-- (void)appendBezierPathWithLeftRoundedRectangle:(NSRect)aRect withRadius:(CGFloat)radius;
+- (void)appendBezierPathWithLeftRoundedRectangle:(NSRect)aRect withRadius:(CGFloat)radius
 {
     NSPoint topMid = NSMakePoint(NSMidX(aRect), NSMaxY(aRect));
     NSPoint topLeft = NSMakePoint(NSMinX(aRect), NSMaxY(aRect));
@@ -802,7 +802,7 @@ void splitBezierCurveTo(const NSPoint *c, CGFloat t, NSPoint *l, NSPoint *r)
     [self closePath];
 }
 
-- (void)appendBezierPathWithRightRoundedRectangle:(NSRect)aRect withRadius:(CGFloat)radius;
+- (void)appendBezierPathWithRightRoundedRectangle:(NSRect)aRect withRadius:(CGFloat)radius
 {
     NSPoint topMid = NSMakePoint(NSMidX(aRect), NSMaxY(aRect));
     NSPoint topLeft = NSMakePoint(NSMinX(aRect), NSMaxY(aRect));
@@ -1050,7 +1050,7 @@ static double subpathElementLength( subpathWalkingState *iter, double errorBudge
 }
 
 
-- (double)lengthToSegment:(NSInteger)seg parameter:(double)parameter totalLength:(double *)totalLengthOut;
+- (double)lengthToSegment:(NSInteger)seg parameter:(double)parameter totalLength:(double *)totalLengthOut
 {
     subpathWalkingState cursor;
     double partialLength;
@@ -1107,7 +1107,7 @@ static double subpathElementLength( subpathWalkingState *iter, double errorBudge
     return partialLength;
 }
 
-- (NSInteger)segmentAndParameter:(double *)outParameter afterLength:(double)position fractional:(BOOL)positionIsFractionOfTotal;
+- (NSInteger)segmentAndParameter:(double *)outParameter afterLength:(double)position fractional:(BOOL)positionIsFractionOfTotal
 {    
     subpathWalkingState cursor;
     const double totalErrorBudget = 0.5;
@@ -1193,7 +1193,7 @@ static double subpathElementLength( subpathWalkingState *iter, double errorBudge
     return cursor.currentElt;
 }
 
-static NSInteger compareFloat(const void *a_, const void *b_)
+static int compareFloat(const void *a_, const void *b_)
 {
     CGFloat a = *(const CGFloat *)a_;
     CGFloat b = *(const CGFloat *)b_;
@@ -1274,7 +1274,7 @@ static NSInteger compareFloat(const void *a_, const void *b_)
 
 // load and save
 
-- (NSMutableDictionary *)propertyListRepresentation;
+- (NSMutableDictionary *)propertyListRepresentation
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSMutableArray *segments = [NSMutableArray array];
@@ -1351,7 +1351,7 @@ static NSInteger compareFloat(const void *a_, const void *b_)
 
 // NSObject overrides
 
-- (BOOL)isEqual:(NSBezierPath *)otherBezierPath;
+- (BOOL)isEqual:(NSBezierPath *)otherBezierPath
 {
     NSUInteger elementIndex, elementCount = [self elementCount];
 
@@ -1410,7 +1410,7 @@ static inline NSUInteger _threeBitsForPoint(NSPoint point)
     return ((NSUInteger)(bothAxes / pow(10.0, floor(log10(bothAxes))))) & 0x7;
 }
 
-- (NSUInteger)hash;
+- (NSUInteger)hash
 {
     NSUInteger hashValue = 0;
     NSUInteger elementIndex, elementCount = [self elementCount];
@@ -1646,12 +1646,21 @@ static NSRect _bezierCurveToBounds(const NSPoint *c)
 
 static NSRect	_boundsOfCurveSegment( const NSPoint startPoint, const NSPoint endPoint, const NSPoint cp1, const NSPoint cp2 )
 {
-    NSPoint low, high;
+    NSPoint low1, low2, high1, high2;
+    low1.x = MIN(startPoint.x, cp1.x);
+    low2.x = MIN(cp2.x, endPoint.x);
+    low1.y = MIN(startPoint.y, cp1.y);
+    low2.y = MIN(cp2.y, endPoint.y);
+    high1.x = MAX(startPoint.x, cp1.x);
+    high2.x = MAX(cp2.x, endPoint.x);
+    high1.y = MAX(startPoint.y, cp1.y);
+    high2.y = MAX(cp2.y, endPoint.y);
     
-    low.x = MIN(MIN(startPoint.x, cp1.x), MIN(cp2.x, endPoint.x));
-    low.y = MIN(MIN(startPoint.y, cp1.y), MIN(cp2.y, endPoint.y));
-    high.x = MAX(MAX(startPoint.x, cp1.x), MAX(cp2.x, endPoint.x));
-    high.y = MAX(MAX(startPoint.y, cp1.y), MAX(cp2.y, endPoint.y));
+    NSPoint low, high;
+    low.x = MIN(low1.x, low2.x);
+    low.y = MIN(low1.y, low2.y);
+    high.x = MAX(high1.x, high2.x);
+    high.y = MAX(high1.y, high2.y);
     
     return NSMakeRect(low.x, low.y, high.x - low.x, high.y - low.y);
 }
@@ -2695,7 +2704,7 @@ static NSInteger coalesceExtendedIntersections(struct intersectionInfo *results,
                 drangeIntersectsDrange(results[i].rightParameter, results[i].rightParameterDistance, results[j].rightParameter, results[j].rightParameterDistance) &&
                 signbit(results[i].rightParameterDistance) == signbit(results[j].rightParameterDistance)) {
                 
-#warning 64BIT: Check formatting arguments
+//#warning 64BIT: Check formatting arguments
                 CDB(printf("combining %d:[%g%+g %g%+g] %s-%s and %d:[%g%+g %g%+g] %s-%s ",
                            i, results[i].leftParameter, results[i].leftParameterDistance, results[i].rightParameter, results[i].rightParameterDistance,
                            straspect(results[i].leftEntryAspect), straspect(results[i].leftExitAspect),
@@ -2738,7 +2747,7 @@ static NSInteger coalesceExtendedIntersections(struct intersectionInfo *results,
                 results[i].rightParameter = newStart;
                 results[i].rightParameterDistance = newEnd - newStart;
                 
-#warning 64BIT: Check formatting arguments
+//#warning 64BIT: Check formatting arguments
                 CDB(printf("into [%g%+g %g%+g] %s-%s\n", results[i].leftParameter, results[i].leftParameterDistance, results[i].rightParameter, results[i].rightParameterDistance, straspect(results[i].leftEntryAspect), straspect(results[i].leftExitAspect));)
                     
                 memmove(&(results[j]), &(results[j+1]), sizeof(*results) * (found - (j+1)));
@@ -3211,7 +3220,7 @@ static BOOL _curvedLineIntersectsRect(const NSPoint *c, NSRect rect, CGFloat tol
     return NO;
 }
 
-- (BOOL)_straightLineIntersection:(CGFloat *)length time:(CGFloat *)tim segment:(NSPoint *)s line:(const NSPoint *)l {
+- (BOOL)_straightLineIntersection:(CGFloat *)length time:(CGFloat *)tim segment:(NSPoint *)s line:(NSPoint *)l {
     // PENDING: should optimize this for the most common cases (s[1] == 0);
     CGFloat u;
     CGFloat t;

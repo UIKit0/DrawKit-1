@@ -34,7 +34,7 @@ static NSMutableDictionary*		sActionNameRegistry = nil;
 	if ( sd == nil )
 	{
 		sd = [[NSMutableDictionary alloc] init];
-		[sActionNameRegistry setObject:sd forKey:cl];
+		[sActionNameRegistry setObject:sd forKey:NSStringFromClass(cl)];
 		[sd release];
 	}
 		
@@ -44,7 +44,7 @@ static NSMutableDictionary*		sActionNameRegistry = nil;
 
 + (NSString*)		actionNameForKeyPath:(NSString*) kp objClass:(Class) cl
 {
-	NSDictionary*	sd = [sActionNameRegistry objectForKey:cl];
+	NSDictionary*	sd = [sActionNameRegistry objectForKey:NSStringFromClass(cl)];
 	NSString*		an = [sd objectForKey:kp];
 	
 	if ( an )

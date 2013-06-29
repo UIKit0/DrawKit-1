@@ -79,7 +79,7 @@
 			[clDict setObject:count forKey:classname];
 			
 			if( mOriginatingLayerKey == nil )
-				mOriginatingLayerKey = [[[obj layer] uniqueKey] retain];
+				mOriginatingLayerKey = [[(DKLayer *)[obj layer] uniqueKey] retain];
 		}
 		
 		mClassInfo = [clDict copy];

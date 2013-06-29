@@ -59,7 +59,7 @@ NSString*	kDKOriginalNameMetadataKey				= @"dk_original_name";
 ///
 ///********************************************************************************************************************
 
-- (id)						initWithPasteboard:(NSPasteboard*) pboard;
+- (id)						initWithPasteboard:(NSPasteboard*) pboard
 {
 	NSImage*		image = nil;
 	if ([NSImage canInitWithPasteboard:pboard])

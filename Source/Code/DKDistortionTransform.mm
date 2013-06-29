@@ -23,14 +23,14 @@ extern "C" {
 #endif
 
 #pragma mark Static Functions
-static inline float	MMul( float a, float b, float c, float d )
+static inline CGFloat	MMul( CGFloat a, CGFloat b, CGFloat c, CGFloat d )
 {
 	return a*d-b*c;
 }
 
-static inline void	VP(float *px, float *py, float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
+static inline void	VP(CGFloat *px, CGFloat *py, CGFloat x1, CGFloat y1, CGFloat x2, CGFloat y2, CGFloat x3, CGFloat y3, CGFloat x4, CGFloat y4)
 {
-  float d = MMul(x1-x2,y1-y2,x3-x4,y3-y4);
+  CGFloat d = MMul(x1-x2,y1-y2,x3-x4,y3-y4);
   
   if (d==0.0f)
     d = 1.0f;
@@ -136,7 +136,7 @@ static NSPoint	Map( NSPoint inPoint, NSSize sourceSize, NSPoint quad[4])
 
 
 #pragma mark -
-- (void)			offsetByX:(float) dx byY:(float) dy
+- (void)			offsetByX:(CGFloat) dx byY:(CGFloat) dy
 {
 	m_q[0].x += dx;
 	m_q[1].x += dx;
@@ -149,7 +149,7 @@ static NSPoint	Map( NSPoint inPoint, NSSize sourceSize, NSPoint quad[4])
 }
 
 
-- (void)			shearHorizontallyBy:(float) dx
+- (void)			shearHorizontallyBy:(CGFloat) dx
 {
 	m_q[0].x += dx;
 	m_q[1].x += dx;
@@ -158,7 +158,7 @@ static NSPoint	Map( NSPoint inPoint, NSSize sourceSize, NSPoint quad[4])
 }
 
 
-- (void)			shearVerticallyBy:(float) dy
+- (void)			shearVerticallyBy:(CGFloat) dy
 {
 	m_q[0].y -= dy;
 	m_q[3].y -= dy;
@@ -167,7 +167,7 @@ static NSPoint	Map( NSPoint inPoint, NSSize sourceSize, NSPoint quad[4])
 }
 
 
-- (void)			differentialPerspectiveBy:(float) delta
+- (void)			differentialPerspectiveBy:(CGFloat) delta
 {
 	m_q[0].y += delta;
 	m_q[1].y -= delta;

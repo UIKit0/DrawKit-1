@@ -739,7 +739,7 @@ NSString*				kDKDimensionUnitsKey		= @"DKDimensionUnits";
 				break;
 				
 			case kDKDimensionDiameter:
-				prefix = [NSString stringWithFormat:@"%C", 0x2300];		// unicode 'diameter' symbol
+				prefix = [NSString stringWithFormat:@"%C", (unichar)0x2300];		// unicode 'diameter' symbol
 				break;
 				
 			case kDKDimensionRadius:

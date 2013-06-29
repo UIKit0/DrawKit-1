@@ -434,7 +434,7 @@ static NSSize			sTempSavedOffset;
 ///
 ///********************************************************************************************************************
 
-- (id)					initWithOvalInRect:(NSRect) aRect;
+- (id)					initWithOvalInRect:(NSRect) aRect
 {
 	return [self initWithOvalInRect:aRect style:[DKStyle defaultStyle]];
 }
@@ -1970,7 +1970,7 @@ static NSSize			sTempSavedOffset;
 				break;
 				
 			case kDKShapeOperationRotate:
-				infoStr = [NSString stringWithFormat:@"%.1f%C", [self angleInDegrees], 0xB0];	// UTF-8 for degree symbol is 0xB0
+				infoStr = [NSString stringWithFormat:@"%.1f%C", [self angleInDegrees], (unichar)0xB0];	// UTF-8 for degree symbol is 0xB0
 				break;
 		}
 		
@@ -2090,7 +2090,7 @@ static NSSize			sTempSavedOffset;
 ///
 ///********************************************************************************************************************
 
-- (DKDistortionTransform*) distortionTransform;
+- (DKDistortionTransform*) distortionTransform
 {
 	return m_distortTransform;
 }
@@ -2272,7 +2272,7 @@ static NSSize			sTempSavedOffset;
 ///
 ///********************************************************************************************************************
 
-- (IBAction)			setDistortMode:(id) sender;
+- (IBAction)			setDistortMode:(id) sender
 {
 	NSInteger m = [sender tag];
 	[self setOperationMode:m];
@@ -2902,7 +2902,7 @@ static NSSize			sTempSavedOffset;
 ///
 ///********************************************************************************************************************
 
-- (void)				setLocation:(NSPoint) location;
+- (void)				setLocation:(NSPoint) location
 {
 	if ( !NSEqualPoints( location, [self location]) && ![self locationLocked])
 	{
